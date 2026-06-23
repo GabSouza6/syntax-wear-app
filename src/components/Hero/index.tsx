@@ -4,7 +4,7 @@ import { Button } from "../Button";
 const Hero = () => {
   return (
     <div className="container">
-      <section className="h-125 relative">
+      <section className="h-125 relative mb-10">
         <img
           src={Banner}
           alt="Homem sentado com os tênis da Syntax Wear"

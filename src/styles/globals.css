@@ -51,3 +51,14 @@
 body {
     font-family: var(--font-display); 
 }
+
+/* Esconde scrollbar no Chrome, Safari e Edge */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Esconde scrollbar no Firefox */
+/* "scrollbar-hide" é um nome criado pelo professor, poderia ser qualquer outro nome como .esconde-scroll, .no-scroll,*/
+.scrollbar-hide {
+  scrollbar-width: none;
+}
