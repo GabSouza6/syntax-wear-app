@@ -1,30 +1,29 @@
 import Banner from "../../assets/images/banner.jpg";
 import { Button } from "../Button";
+import Overlay from "../Overlay";
+
 
 const Hero = () => {
   return (
     <div className="container">
-      <section className="h-125 relative mb-10">
+      <section className="relative h-125 rounded-[20px] mb-10">
         <img
           src={Banner}
-          alt="Homem sentado com os tênis da Syntax Wear"
-          className="h-full w-full object-cover rounded-[20px]"
+          alt="Homem sentado com os tênis da SyntaxWear"
+          className="w-full h-full object-cover rounded-[20px]"
         />
 
-        <div className="absolute w-full flex justify-end text-center bottom-0 px-6 md:px-24 pb-32">
-          <div className="flex flex-col items-center text-white w-97">
-            <h2 className="text-xl font-medium  mb-2 tracking-wider leading-normal">Krypton One</h2>
-            <h1 className="text-2xl font-medium tracking-widest mb-10 leading-9">Transforme qualquer passo em presença.</h1>
-
-            <div className="flex gap-5">
-              <Button variant="secondary" size="sm">Ver Modelos</Button>
-              <Button>Comprar</Button>
-            </div>
-          </div>
-        </div>
+        <Overlay
+          title="Kripton One"
+          subtitle="Transforme qualquer passo em presença"
+          className="bottom-0 px-6 md:px-24 pb-24 justify-end md:items-end"
+        >
+          <Button variant="secondary">Ver modelos</Button>
+          <Button>Comprar</Button>
+        </Overlay>
       </section>
     </div>
   );
 };
 
-export default Hero;
+export default Hero
