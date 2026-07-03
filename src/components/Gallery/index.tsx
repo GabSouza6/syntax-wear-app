@@ -8,7 +8,7 @@ import styles from "./Gallery.module.css";
 import Overlay from "../Overlay";
 import { Button } from "../Button";
 
-export const Gallery = () => {
+const Gallery = () => {
   return (
     <div className="container">
       <div className={styles.galleryGrid}>
@@ -84,3 +84,5 @@ export const Gallery = () => {
     </div>
   );
 };
+
+export default Gallery
