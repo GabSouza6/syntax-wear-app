@@ -3,8 +3,6 @@ import MenuItems from "../MenuItems";
 import SocialLinks from "../SocialLinks";
 import SubscriptionForm from "../SubscriptionForm";
 
-
-
 const Footer = () => {
   return (
     <footer className="bg-footer-bg">
