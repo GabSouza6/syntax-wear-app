@@ -10,7 +10,7 @@ const MenuItems = () => {
   return (
     <div className="flex flex-col gap-8 sm:flex-row">
       {menus.map(({ title, items }) => (
-        <nav>
+        <nav key={title}>
           <ul>
             <li>
               <p className="font-normal text-surface-alt text-xl">{title}</p>

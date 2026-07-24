@@ -1,34 +1,44 @@
 import { MdAddShoppingCart } from "react-icons/md";
 import { Link } from "@tanstack/react-router";
 import type { Product } from "../../interfaces/product";
-
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 
 interface ProductCardProps {
-    product: Product
+  product: Product;
 }
 
-const ProductCard = ({product}: ProductCardProps) => {
-    return (
-         <div className="bg-white rounded-2xl shadow-md">
-          <Link to="/products/$productId" params={{productId: String(product.id)}}>
-            <img className="w-full max-h-100 object-cover rounded-md mb-2" src={product.image} alt={product.name} />
-          </Link>
+const ProductCard = ({ product }: ProductCardProps) => {
+  const { addToCart } = useContext(CartContext);
 
-          <div className="text-black rounded-2xl p-4">
-            <h3 className="text-lg font-semibold">{product.name}</h3>
+  return (
+    <div className="bg-white rounded-2xl shadow-md">
+      <Link
+        to="/products/$productId"
+        params={{ productId: String(product.id) }}
+      >
+        <img
+          className="w-full max-h-100 object-cover rounded-md mb-2"
+          src={product.image}
+          alt={product.name}
+        />
+      </Link>
 
-            <p>{product.color}</p>
+      <div className="text-black rounded-2xl p-4">
+        <h3 className="text-lg font-semibold">{product.name}</h3>
 
-            <div className="flex justify-between mt-3.5">
-              <p className="font-b">R${product.price},00</p>
+        <p>{product.color}</p>
 
-              <button className="cursor-pointer">
-                <MdAddShoppingCart className="h-7 w-7"/>
-              </button>
-            </div>
-          </div>
+        <div className="flex justify-between mt-2.5">
+          <p className="font-bold">R${product.price},00</p>
+
+          <button className="cursor-pointer" onClick={() => addToCart(product)}>
+            <MdAddShoppingCart className="h-7 w-7" />
+          </button>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default ProductCard
+export default ProductCard;
