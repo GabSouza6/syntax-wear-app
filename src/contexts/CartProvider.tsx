@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Product } from "../interfaces/product";
 import { CartContext } from "./CartContext";
 
@@ -10,12 +10,21 @@ export interface ProductCart extends Product {
   quantity: number;
 }
 
+const localStorageKey = "@SyntaxWear:cart";
+
 export const CartProvider = ({ children }: CartProviderProps) => {
-  const [cart, setCart] = useState<ProductCart[]>([]);
+  const [cart, setCart] = useState<ProductCart[]>(() => {
+    const cartFromLocalStorage = localStorage.getItem(localStorageKey);
+    return cartFromLocalStorage !== null ? JSON.parse(cartFromLocalStorage) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem(localStorageKey, JSON.stringify(cart));
+  }, [cart]);
 
   function addToCart(product: Product): void {
     const productExistsInCart = cart.find(
-      (itemIncart) => itemIncart.id === product.id,
+      (itemIncart) => itemIncart.id === product.id
     );
 
     let newCart;
@@ -24,7 +33,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
       newCart = cart.map((itemInCart) =>
         itemInCart.id === product.id
           ? { ...itemInCart, quantity: itemInCart.quantity + 1 }
-          : itemInCart,
+          : itemInCart
       );
     } else {
       newCart = [...cart, { ...product, quantity: 1 }];
@@ -47,12 +56,12 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
   function updateProductQuantity(
     product: ProductCart,
-    newQuantity: number,
+    newQuantity: number
   ): void {
     if (newQuantity <= 0) return;
 
     const productExistsInCart = cart.find(
-      (itemIncart) => itemIncart.id === product.id,
+      (itemIncart) => itemIncart.id === product.id
     );
 
     if (!productExistsInCart) return;
@@ -60,7 +69,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     const newCart = cart.map((itemInCart) =>
       itemInCart.id === product.id
         ? { ...itemInCart, quantity: newQuantity }
-        : itemInCart,
+        : itemInCart
     );
 
     setCart(newCart);

@@ -14,10 +14,13 @@ const ShoppingCart = () => {
   return (
     <>
       <button
-        className="cursor-pointer"
+        className="relative cursor-pointer"
         onClick={() => setCartIsOpen(!cartIsOpen)}
       >
         <img src={IconCart} alt="Ícone carrinho de compras" />
+        {cart.length > 0 && (
+          <span className="absolute bg-red-500 -top-3 -right-2 w-5 h-5 rounded-full items-center flex justify-center text-xs text-white">{cart.length}</span>
+        )}
       </button>
 
       {/* { Overlay } */}
