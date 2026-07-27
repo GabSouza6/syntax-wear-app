@@ -16,7 +16,7 @@ const navLinks: NavLink[] = [
   { name: "Outlet", href: "/products" },
 ];
 
-export const Header = () => {
+const Header = () => {
   return (
     <div className="relative">
       <header className="fixed top-5 left-0 right-0 z-10 mx-10">
@@ -66,3 +66,5 @@ export const Header = () => {
     </div>
   );
 };
+
+export default Header
