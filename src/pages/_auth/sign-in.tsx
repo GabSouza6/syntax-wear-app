@@ -13,7 +13,7 @@ export const Route = createFileRoute("/_auth/sign-in")({
 
 function RouteComponent() {
   return (
-    <section className="text-black bg-[#f5f5f5] h-screen w-full flex justify-center items-center p-5">
+    <section className="text-black bg-surface h-screen w-full flex justify-center items-center p-5">
       <div className="w-112.5 bg-white rounded-[18px] p-10 shadow-md">
         <div className="flex flex-col">
           <Logo />
@@ -22,7 +22,7 @@ function RouteComponent() {
 
           <p className="mb-3.5">Escoha como você gostaria de fazer login</p>
 
-          <button className="w-full flex items-center justify-center gap-2 border border-gray-300 rounded-md py-3 hover:bg-gray-50 transition cursor-pointer">
+          <button className="w-full flex items-center justify-center gap-2 border border-border rounded-md py-3 hover:bg-gray-50 transition cursor-pointer">
             <img src={GoogleIcon} className="w-5 h-5" />
             <span className="text-sm font-medium text-black">
               Continuar com Google

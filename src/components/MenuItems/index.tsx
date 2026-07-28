@@ -19,7 +19,7 @@ const MenuItems = () => {
               <li key={item}>
                 <a
                   href="#"
-                  className="font-medium text-xl transition-colors hover:text-[#cccccc]"
+                  className="font-medium text-xl transition-colors hover:text-text-tertiary]"
                 >
                   {item}
                 </a>
