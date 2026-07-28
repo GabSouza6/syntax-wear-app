@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { products } from "../../../mocks/products";
 import ProductList from "../../../components/ProductList";
+import { products } from "../../../mocks/products";
 
 export const Route = createFileRoute("/_app/products/")({
   component: RouteComponent,
@@ -15,7 +15,11 @@ function RouteComponent() {
         Conforto excepcional para suas aventuras do dia-a-dia
       </h2>
 
-      <ProductList products={products} />
+      {products.length === 0 ? (
+        <p className="text-center">Nenhum produto encontrado.</p>
+      ) : (
+        <ProductList products={products} />
+      )}
     </div>
   );
 }
